@@ -5,28 +5,28 @@ import React, { createContext, useState, ReactNode, useEffect } from 'react';
 interface AppContextType {
   username: string;
   setUsername: (username: string) => void;
-  shipments:shipment[],
-  setShipments: (shipment:shipment[]) => void;
+  shipments:Partial<shipment>[],
+  setShipments: (shipment:Partial<shipment>[]) => void;
   selectedItems: string[];
   updateSelectedItems: (items:string[]) => void;
-  shipmentStatus: shipment_status[];
-  updateShipmentStatus: (items:shipment_status[]) => void;
+  shipmentStatus: Partial<shipment_status>[];
+  updateShipmentStatus: (items:Partial<shipment_status>[]) => void;
 }
 
 export const AppContext = createContext<AppContextType>({username:"",setUsername:()=>{},shipments:[], setShipments:()=>{}, selectedItems:[], updateSelectedItems:()=>{}, shipmentStatus:[], updateShipmentStatus:()=>{},});
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [username, setUsername] = useState('');
-  const [shipments, setShipments] = useState<shipment[]>([]);
-  const [shipmentStatus, setShipmentStatus] = useState<shipment_status[]>([]);
+  const [shipments, setShipments] = useState<Partial<shipment>[]>([]);
+  const [shipmentStatus, setShipmentStatus] = useState<Partial<shipment_status>[]>([]);
   const [selectedItems, setSelectedItems] = useState<string[]>([])
-  const updateShipment = (shipments:shipment[]) => {
+  const updateShipment = (shipments:Partial<shipment>[]) => {
     setShipments(shipments);
   }
   const updateSelectedItems = (items:string[]) => {
     setSelectedItems(items);
   };
-  const updateShipmentStatus = (items:shipment_status[]) => {
+  const updateShipmentStatus = (items:Partial<shipment_status>[]) => {
     setShipmentStatus(items);
   };
   useEffect(()=>{

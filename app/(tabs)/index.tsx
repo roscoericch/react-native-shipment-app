@@ -10,6 +10,7 @@ import Checkbox from 'expo-checkbox';
 import FilterPopup from '@/components/FilterPopup';
 import { AppContext } from '@/context/AppContext';
 import axios from "@/api/axios";
+import { shipment } from '@/types';
 
 export default function HomeScreen() {
   const [searchValue, setSearchValue] = useState("");
@@ -99,9 +100,9 @@ export default function HomeScreen() {
           <View style={styles.scrollHead}>
             <Text style={styles.title}>Shipments</Text>
             <View style={styles.checkBoxGroup}>
-              <Checkbox value={shipments.length > 0 && shipments.every(item => selectedItems.includes(item.name))} onValueChange={(value)=>{
+              <Checkbox color={"#2F50C1"} value={shipments.length > 0 && shipments.every(item => selectedItems.includes(item?.name!))} onValueChange={(value)=>{
                 if(value){
-                  updateSelectedItems([...shipments.map((e)=>e?.name)])
+                  updateSelectedItems([...shipments.map((e)=>(e?.name!))])
                 } else {
                   updateSelectedItems([])
                 }
@@ -112,7 +113,7 @@ export default function HomeScreen() {
           <View>
           <FlatList
           data={shipments}
-          renderItem={({ item }) => <Collapsible item={item} />}
+          renderItem={({ item }) => <Collapsible item={item as shipment} />}
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={()=><View style={styles.seperator}></View>}
           showsVerticalScrollIndicator={false}

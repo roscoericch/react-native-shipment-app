@@ -15,7 +15,7 @@ export function Collapsible({item}:{item:shipment}) {
   return (
     <ThemedView style={styles.container}>
       <View style={styles.topContent}>
-      <Checkbox value={selectedItems.includes(item?.name)} onValueChange={(value)=>{
+      <Checkbox color={"#2F50C1"} value={selectedItems.includes(item?.name)} onValueChange={(value)=>{
         if(value){
           updateSelectedItems([...selectedItems,item?.name])
         } else {
