@@ -18,5 +18,12 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 download expo go app on android or ios and scan qr code that appears after start command.
 
 4. create build
-   ios - run eas build --platform ios
-   android - run eas build --platform android
+
+   ios - 
+   ```bash
+    eas build --platform ios
+   ```
+   android -
+   ```bash
+    eas build --platform android
+   ```
